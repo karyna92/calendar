@@ -1,0 +1,13 @@
+$font-size: 23px;
+$font-family: 'Courier New', Courier, monospace;
+$background-color: rgb(33, 33, 33);
+$text-color: rgb(240, 235, 235);
+
+* {
+   font-family: $font-family;
+}
+body { 
+  background-color: $background-color;
+  color: $text-color;
+  font-size: $font-size;
+}

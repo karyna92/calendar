@@ -1,0 +1,78 @@
+$accent-color: rgb(233, 71, 71);
+$secondary-bg: rgb(54, 54, 54);
+$secondary-text: rgb(217, 217, 217);
+
+@mixin box-style {
+  box-sizing: border-box;
+  background-color: $secondary-bg;
+  width: 100%;
+  padding: 25px;
+  position: fixed;
+}
+
+header {
+  @include box-style;
+  top: 0;
+  h2,
+  h3 {
+    color: $accent-color;
+  }
+  .month {
+    display: flex;
+    justify-content: space-between;
+    button {
+      color: white;
+      background-color: rgba(97, 97, 97, 0.594);
+      border: 2px solid rgb(128, 128, 128);
+      border-radius: 50%;
+      align-self: center;
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+    }
+  }
+}
+.weekdays {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: $secondary-bg;
+  span {
+    font-size: 0.9rem;
+  }
+}
+.days{ 
+  display:flex;
+  flex-wrap: wrap;
+  .day{ 
+    width: calc(100%/7);
+    text-align:center;
+    border-bottom: 2px solid white;
+  }
+}
+.daysOfDiffMonths{ 
+  background-color: $secondary-bg;
+  color: $secondary-text;
+}
+.today{ 
+  background-color: $accent-color;
+  border-radius: 50%;
+}
+footer {
+  @include box-style;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $secondary-bg;
+  align-items: center;
+
+  //чому не працює?
+}
+button {
+  background-color: inherit;
+  color: $accent-color;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}

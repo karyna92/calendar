@@ -7,8 +7,8 @@ import "./index.scss";
 import "./App.scss";
 
 function App() {
-  const currentDay = new Date().getDate();
-  const [ currentMonth, setcurrentMonth ] = useState(new Date().getMonth());
+  const currentDay = new Date();
+  const [ currentMonth, setcurrentMonth ] = useState(new Date());
   const [currentYear, setcurrentYear] = useState(new Date().getFullYear());
 
   return (

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import{ addMonths, subMonths,} from 'date-fns';
+import{ addMonths, subMonths,format} from 'date-fns';
 import CurrentDateContext from "../../contexts/currentDate"
 import styles from "./styles.module.scss";
 function Header() {
@@ -14,7 +14,7 @@ function Header() {
     <header>
       <h2>{currentYear}</h2>
       <div className={styles.month}>
-        <h3>{currentMonth}</h3>
+        <h3>{format(currentMonth, "MMMM")}</h3>
         <div>
           <button onClick={prevMonth}>&lt;</button>
           <button onClick={nextMonth}>&gt;</button>

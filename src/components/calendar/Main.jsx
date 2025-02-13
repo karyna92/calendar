@@ -1,23 +1,43 @@
-import { useContext } from "react";
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay } from "date-fns";
-import {CurrentDateContext} from "../../contexts/currentDate";
-import WEEKDAYS from "../../constants";
+import { useContext } from 'react';
+import {
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  eachDayOfInterval,
+  isSameMonth,
+  isSameDay,
+  format
+} from 'date-fns';
+import CurrentDateContext from '../../contexts/currentDate';
+import WEEKDAYS from '../../constans';
 import styles from './styles.module.scss';
 function Main() {
-    const { currentMonth,currentDay } = useContext(CurrentDateContext);
+  const { currentMonth, currentDay } = useContext(CurrentDateContext);
   const startMonth = startOfMonth(currentMonth);
   const endMonth = endOfMonth(currentMonth);
   const startWeek = startOfWeek(startMonth);
   const endWeek = endOfWeek(endMonth);
 
-  const days = eachDayOfInterval({ start: startWeek, end: endWeek });  
+  const days = eachDayOfInterval({ start: startWeek, end: endWeek });
+
+  return (
     <main>
       <div className={styles.weekdays}>
-       {WEEKDAYS.map(day=><span key={day}>{day}</span>)}
-            </div>
-      <section className={styles.days}>
-        {days.map((day, index) => (
-          <div key={index} className={`${styles.day} ${!isSameMonth(day, currentMonth)? 'styles.daysOfDiffMonths':''} ${isSameDay(day, currentDay)? 'styles.today': ''}`}>{day}</div>
+        {WEEKDAYS.map((day, index) => (
+          <span className={styles.weekday} key={index}>{day}</span>
+        ))}
+      </div>
+      <section className={styles.dates}>
+        {days.map((date, index) => (
+          <div
+            key={`${new Date(date).getTime()} ${index}`}
+            className={`${styles.date} ${
+              !isSameMonth(date, currentMonth) ? styles.daysOfDiffMonths : '' 
+            } ${isSameDay(date, currentDay) ? styles.today : ''}`}
+          >
+            {format(date, 'dd')}
+          </div>
         ))}
       </section>
     </main>

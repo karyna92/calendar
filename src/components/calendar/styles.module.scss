@@ -13,6 +13,7 @@ $secondary-text: rgb(217, 217, 217);
 header {
   @include box-style;
   top: 0;
+  height: 15vh;
   h2,
   h3 {
     color: $accent-color;
@@ -33,30 +34,38 @@ header {
   }
 }
 .weekdays {
+  margin-top: 15vh;
+  margin-bottom: 5vh;
   display: flex;
   justify-content: space-around;
   width: 100%;
+  height: 3remrem;
   background-color: $secondary-bg;
   span {
-    font-size: 0.9rem;
+    color: white;
+    height: 3rem;
+    width: 3rem;
   }
 }
-.days{ 
-  display:flex;
+.dates {
+  display: flex;
   flex-wrap: wrap;
-  .day{ 
-    width: calc(100%/7);
-    text-align:center;
+  .date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    height: 100px;
+    align-self: center;
     border-bottom: 2px solid white;
   }
 }
-.daysOfDiffMonths{ 
+.daysOfDiffMonths {
   background-color: $secondary-bg;
   color: $secondary-text;
 }
-.today{ 
+.today {
   background-color: $accent-color;
-  border-radius: 50%;
 }
 footer {
   @include box-style;

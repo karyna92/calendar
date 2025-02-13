@@ -1,1 +1,85 @@
+.tasksContainer {
+  margin-top: 15vh;
+  width: 97%;
+  flex-shrink: 1;
+  height: 80vh;
+  background-color: rgb(79, 79, 79);
+  border: 1.5px solid rgb(116, 116, 116);
+  border-radius: 10px;
+  padding: 0 2rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  label {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    gap: 2rem;
+    input {
+      width: 70%;
+      line-height: 2rem;
+      border-radius: 7px;
+    }
+    textarea {
+      width: 70%;
+      border-radius: 7px;
+    }
+  }
+}
+h2 {
+  text-align: center;
+  padding: 1rem;
+  font-size: 2rem;
+  color: rgb(230, 59, 59);
+}
+.taskListItems{
+    overflow-y:scroll;
+}
+.taskItem {
+    margin: 12px;
+  padding: 1rem;
+  background-color: rgba(108, 86, 86, 0.781);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  .time {
+    width: 35%;
+    border-right: 2px solid rgb(130, 130, 130);
+    padding: 1.2rem;
+    p:nth-child(2) {
+      font-size: 2.3rem;
+    }
+    
+  }
+}
+.text {
+    width: 60%;
+    padding: 1.2rem;
+    p{
+        font-size: 1.2rem;
+        color:rgb(201, 201, 201);
+        padding: 10px;
+    }
+  }
+h4{
+  font-size: 2rem;
+}
 
+@media (max-width: 800px) {
+     .tasksContainer{ 
+        position: absolute;
+     }
+}

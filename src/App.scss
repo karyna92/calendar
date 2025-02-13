@@ -1,4 +1,4 @@
-$font-size: 23px;
+$font-size: 22px;
 $font-family: 'Courier New', Courier, monospace;
 $background-color: rgb(33, 33, 33);
 $text-color: rgb(240, 235, 235);
@@ -10,4 +10,13 @@ body {
   background-color: $background-color;
   color: $text-color;
   font-size: $font-size;
+}
+.mainContainer{
+   display: flex;
+}
+@media (max-width: 800px) {
+   .mainContainer{
+       flex-direction: column;
+       flex-wrap: nowrap;
+   }
 }

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import{ addMonths, subMonths,format} from 'date-fns';
-import CurrentDateContext from "../../contexts/currentDate"
+import {CurrentDateContext} from "../../contexts/index"
 import styles from "./styles.module.scss";
 function Header() {
   const { currentMonth, currentYear, setcurrentMonth } = useContext(CurrentDateContext);

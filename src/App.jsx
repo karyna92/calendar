@@ -14,6 +14,7 @@ function App() {
   const [currentYear, setcurrentYear] = useState(new Date().getFullYear());
   const [showAddTask, setShowAddTask] = useState(false);
   const [showAllTasks, setShowAllTasks] = useState(false);
+  const [specificDateTask, setSpecificDateTask] = useState(false);
   const [title, setTitle] = useState("");
   const [notesMessage, setNotesMessage] = useState("");
   const [dueDate , setDueDate] = useState("");
@@ -33,7 +34,7 @@ function App() {
         setcurrentYear,
       }}
     >
-      <AddTaskModule.Provider value={{ showAddTask, setShowAddTask,showAllTasks, setShowAllTasks, title, setTitle, notesMessage, setNotesMessage, dueDate , setDueDate, dueTime, setDueTime, tasks, setTasks}}>
+      <AddTaskModule.Provider value={{ showAddTask, setShowAddTask,showAllTasks, setShowAllTasks, specificDateTask, setSpecificDateTask, title, setTitle, notesMessage, setNotesMessage, dueDate , setDueDate, dueTime, setDueTime, tasks, setTasks}}>
         <section>
           <Header />
           <div className="mainContainer"> 

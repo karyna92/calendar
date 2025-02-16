@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import {
   startOfMonth,
   endOfMonth,
@@ -7,13 +7,14 @@ import {
   eachDayOfInterval,
   isSameMonth,
   isSameDay,
-  format
-} from 'date-fns';
-import CurrentDateContext from '../../contexts/currentDate';
-import WEEKDAYS from '../../constans';
-import styles from './styles.module.scss';
+  format,
+} from "date-fns";
+import { AddTaskModule, CurrentDateContext } from "../../contexts/index";
+import WEEKDAYS from "../../constans";
+import styles from "./styles.module.scss";
 function Main() {
   const { currentMonth, currentDay } = useContext(CurrentDateContext);
+  const { tasks, setDueDate, setShowAllTasks, setSpecificDateTask } = useContext(AddTaskModule);
   const startMonth = startOfMonth(currentMonth);
   const endMonth = endOfMonth(currentMonth);
   const startWeek = startOfWeek(startMonth);
@@ -21,11 +22,22 @@ function Main() {
 
   const days = eachDayOfInterval({ start: startWeek, end: endWeek });
 
+  const hasTask = (date) => {
+    return tasks.some((task) => task.dueDate === format(date, "yyyy-MM-dd"));
+  };
+
+  const handleDateClick = (date) => {
+    setDueDate(format(date, "yyyy-MM-dd"));
+    setShowAllTasks(true)
+    setSpecificDateTask(true)
+  };
   return (
     <main>
       <div className={styles.weekdays}>
         {WEEKDAYS.map((day, index) => (
-          <span className={styles.weekday} key={index}>{day}</span>
+          <span className={styles.weekday} key={index}>
+            {day}
+          </span>
         ))}
       </div>
       <section className={styles.dates}>
@@ -33,10 +45,13 @@ function Main() {
           <div
             key={`${new Date(date).getTime()} ${index}`}
             className={`${styles.date} ${
-              !isSameMonth(date, currentMonth) ? styles.daysOfDiffMonths : '' 
-            } ${isSameDay(date, currentDay) ? styles.today : ''}`}
+              !isSameMonth(date, currentMonth) ? styles.daysOfDiffMonths : ""
+            } ${isSameDay(date, currentDay) ? styles.today : ""} ${
+              hasTask(date) ? styles.hasTask : ""
+            }`}
+            onClick={() => handleDateClick(date)}
           >
-            {format(date, 'dd')}
+            {format(date, "dd")}
           </div>
         ))}
       </section>

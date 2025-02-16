@@ -18,7 +18,10 @@ function App() {
   const [notesMessage, setNotesMessage] = useState("");
   const [dueDate , setDueDate] = useState("");
   const [dueTime, setDueTime] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : []; 
+  });
 
   return (
     <CurrentDateContext.Provider
